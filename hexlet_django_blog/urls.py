@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hexlet_django_blog import view
 
 urlpatterns = [
+    path('', view.index),
+    path('about/', view.about),
     path('admin/', admin.site.urls),
 ]
