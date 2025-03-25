@@ -6,5 +6,6 @@ def index(request):
         'who': 'world',
     })
 
+
 def about(request):
     return render(request, 'about.html')
