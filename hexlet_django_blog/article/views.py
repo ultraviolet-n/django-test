@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.http import HttpResponse
+from django.views import View
 
 TEAM = [
     {'name': 'Yoda', 'position': 'CEO'},
@@ -12,8 +13,10 @@ TEAM = [
 ]
 
 
-def index(request):
-    return HttpResponse('article')
+class IndexView(View):
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Article')
 
 
 def article(request):
