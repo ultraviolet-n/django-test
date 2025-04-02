@@ -1,23 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 
 # Create your views here.
 
-from django.http import HttpResponse
 from django.views import View
-
-TEAM = [
-    {'name': 'Yoda', 'position': 'CEO'},
-    {'name': 'Obi-Wan Kenobi', 'position': 'Senior Developer'},
-    {'name': 'Anakin Skywalker', 'position': 'Junior Developer'},
-    {'name': 'Jar Jar Binks', 'position': 'Trainee'},
-]
 
 
 class IndexView(View):
 
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Article')
+    def get(self, request, tags, article_id):
+        return redirect(reverse('article', kwargs={'article_id': article_id, 'tags': tags}))
 
 
-def article(request):
-    return render(request, 'article.html', context={'TEAM': TEAM})
+def index(request, tags, article_id):
+    return render(request, 'article/index.html', context={'tags': tags, 'article_id': article_id})
